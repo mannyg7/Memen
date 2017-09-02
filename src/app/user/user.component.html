@@ -52,19 +52,20 @@
 						</tr>
 						<tr *ngFor="let comment of articleP.comments; let ind = index">
 							<div [class]="'id'+i" [id]="'id'+i"> 
-								<div class="comCard" style="max-width: 800px">
+								<div class="comCard" style="max-width: 500px">
 									<div >
 										<img id="posterImg" [attr.src]="getpic(comment.author | pipemodule | async)">
 										<h4 style="display:inline-block"><a [routerLink]="['/user', comment.author]"><button id="userbutton">{{comment.author}}</button></a>&#183; 
 											<small style="font-size:15px;line-height:50px">{{articleP.date.substring(0,10)}}
 											</small>
 										</h4>
+										<div id="edit" *ngIf="comment.author == currUserName" style="display:inline-block; float:right; font-size:12px;line-height:70px">
+											<button [class]="comment.commentId" id="editCom" (click)="editComments(comment.commentId, comment.author)">Edit</button> 
+											<button [class]="comment.commentId" id="submitCom" style='display:none' (click)="submitComEdit(i, ind, comment.commentId, articleP.id, articleP.author)">Submit</button> 
+										</div>
 									</div>
 									<p [id]="comment.commentId"> {{comment.text}}</p>
-									<div *ngIf="comment.author == currUserName">
-										<button [class]="comment.commentId" id="editCom" (click)="editComments(comment.commentId, comment.author)">Edit</button> 
-										<button [class]="comment.commentId" id="submitCom" style='display:none' (click)="submitComEdit(i, ind, comment.commentId, articleP.id, articleP.author)">Submit</button> 
-									</div>
+									
 								</div>
 							</div>
 						</tr>

@@ -1,5 +1,6 @@
-<body>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
 
+<body>
 <div class="row">
 	<div id="profile" class="rightcolumn">
 		<div class="header">
@@ -19,7 +20,11 @@
 			<br/>
 		</div>					
 	</div>
-	<div id="articles" class="leftcolumn">
+	<div id="articles" class="leftcolumn" infiniteScroll
+	     [infiniteScrollDistance]="2"
+	     [infiniteScrollThrottle]="1000"
+	     (scrolled)="onScrollDown()"
+	     [scrollWindow]="false">
 		<table id="postTable">
 			<tr *ngFor="let articleP of articleArray; let i = index">
 				<div class="tablecard">
@@ -42,21 +47,23 @@
 			</tr>
 			<hr>
 		</table>
-	</div>
-	<div class="search-results"
-		     infinite-scroll
-		     [infiniteScrollDistance]="2"
-		     [infiniteScrollThrottle]="1000"
-		     (scrolled)="onScrollDown()">
+<!-- 		<div class="d-flex justify-content-center">
+			<div *ngIf="!finished" class="spinner-border" role="status">
+				<span class="sr-only">Loading...</span>
+			</div>
+		</div> -->
+
+		<div *ngIf="!finished" class="lds-facebook"><div></div><div></div><div></div></div>
+
+		<div *ngIf="finished" class="end">
+		  	No more memes...
 		</div>
-
-	<div *ngIf="!finished" class="spinner-border" role="status">
-	<span class="sr-only">Loading...</span>
 	</div>
 
-	<div *ngIf="finished">
-	  	No more memes...
-	</div>
+	
+
+
+	
 </div >
 
 </body>

@@ -22,6 +22,11 @@ body {
 /*  background-repeat: no-repeat;
   background-size: auto;*/
   height: 100%;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
 }
 
 /* Add a card effect for articles */
@@ -60,6 +65,7 @@ body {
   padding-left: 10px;
   overflow: scroll;
   margin-top: -10px;
+  display: inline-block;
   /*background-color: black;*/
   /*flex: 1 1 auto;*/
   

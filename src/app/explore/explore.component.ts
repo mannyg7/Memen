@@ -22,6 +22,7 @@ export class ExploreComponent implements OnInit {
   currUserName: string;
   finished = false;
   avatar= "http://www.lumineers.me/images/core/profile-image-zabadnesterling.gif";
+  elem: HTMLElement = <HTMLElement>document.getElementsByClassName('leftcolumn')[0];
   headers;
   options;
 
@@ -32,34 +33,30 @@ export class ExploreComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get("https://ricebookmrg7.herokuapp.com/explore/0", this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        	console.log(data);
-        } else {
-          console.log(data.json().articles);
-          this.articleArray = data.json().articles[0];
-          console.log(this.articleArray);
-        }
-    });
     this.http.get("https://ricebookmrg7.herokuapp.com/email", this.options).subscribe(data =>  {
         if (data.status != 200) {
-          console.log(data);
         } else {
           this.currUserName = data.json().username;
           this.http.get("https://ricebookmrg7.herokuapp.com/headlines/" + this.currUserName, this.options).subscribe(data =>  {
               if (data.status != 200) {
-                console.log(data);
               } else {
                 this.status = data.json().headlines[0];
               }
           });
           this.http.get("https://ricebookmrg7.herokuapp.com/avatars/" + this.currUserName, this.options).subscribe(data =>  {
               if (data.status != 200) {
-                console.log(data);
               } else {
                 this.avatar = data.json().avatar[0];
               }
           });
+        }
+    });
+
+    this.http.get("https://ricebookmrg7.herokuapp.com/explore/0", this.options).subscribe(data =>  {
+        if (data.status != 200) {
+        } else {
+          console.log(data.json().articles);
+          this.articleArray = data.json().articles[0];
         }
     });
     
@@ -72,6 +69,7 @@ export class ExploreComponent implements OnInit {
         	console.log(data);
           this.finished = true;
         } else {
+          console.log(data.json());
           console.log(data.json().articles[0]);
           if (data.json().articles[0].length == 0) {
             this.finished = true;
