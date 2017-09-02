@@ -1,0 +1,62 @@
+<body>
+
+<div class="row">
+	<div id="profile" class="rightcolumn">
+		<div class="header">
+		</div>
+		<div class="card" style="float:right">
+			<a routerLink="/main"><button>NewsFeed </button></a>
+			&nbsp;
+			<a routerLink="/explore"><button id="topbutton">Explore </button></a>
+			&nbsp;
+			<button (click)="logout()" id="topbutton">Logout</button>
+		</div>
+		<div id="userInfo" class="card">
+			<h1 style="float:left">{{currUserName}}</h1>
+			<img id="propic" [src]="avatar">
+			<br/>
+			<label id="status">Status:</label><div id="headline" [innerHTML]="status"></div>
+			<br/>
+		</div>					
+	</div>
+	<div id="articles" class="leftcolumn">
+		<table id="postTable">
+			<tr *ngFor="let articleP of articleArray; let i = index">
+				<div class="tablecard">
+					<td id="newArticle" class="card">
+						<tr id="newArticle" class="card">
+							<div class="media">
+								<img id="posterImg" [attr.src]="getpic(articleP.author | pipemodule | async)">
+								<h4 style="display:inline-block"><a [routerLink]="['/user', articleP.author]"><button id="userbutton">{{articleP.author}}</button></a> &#183; 
+									<small style="font-size:15px;line-height:50px">{{articleP.date.substring(0,10)}}
+									</small>
+								</h4>
+							</div>
+
+							<div class="fakeimg"><img id="articleImg" [src]="articleP.img" style="max-width: 600px"></div>
+							<p [id]="articleP.id" class="something" style="max-width: 600px">{{articleP.text}}</p>
+						</tr>
+						<br>
+					</td>
+				</div>
+			</tr>
+			<hr>
+		</table>
+	</div>
+	<div class="search-results"
+		     infinite-scroll
+		     [infiniteScrollDistance]="2"
+		     [infiniteScrollThrottle]="1000"
+		     (scrolled)="onScrollDown()">
+		</div>
+
+	<div *ngIf="!finished" class="spinner-border" role="status">
+	<span class="sr-only">Loading...</span>
+	</div>
+
+	<div *ngIf="finished">
+	  	No more memes...
+	</div>
+</div >
+
+</body>

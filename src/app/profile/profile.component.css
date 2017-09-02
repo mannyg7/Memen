@@ -1,0 +1,140 @@
+.header {
+  height: 12em;
+  width: 288px;
+  background-image: url("memes.jpg");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.rightcol 
+{
+  width: 80%;
+  text-align: center;
+  display: inline-block
+}
+
+.leftcol
+{
+  width: 20%;
+  height: 100%;
+  background-color: black;
+  float: left;
+  position: fixed;
+}
+
+body {
+  /*background-image:linear-gradient(to bottom right,#4568DC, #B06AB3);*/
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: auto;
+  /*background-color: black;*/
+
+  height: 100%;
+}
+.profilecard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  max-width: 600px;
+  text-align: center;
+  font-family: arial;
+  margin-bottom: 20px;
+  margin-left: 500px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  /*background-color: #000;*/
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+#upload {
+  text-align: center;
+  margin: auto;
+  visibility: hidden;
+}
+
+#label
+{
+	text-decoration: underline;
+	width:100%;
+}
+
+#menu
+{
+	font-size: 40px;
+	vertical-align: middle;
+  color: #000;
+}
+
+.bottom {
+	width: 50%;
+	display: inline-block;
+	float: left;
+}
+
+/*.paddingLeft {
+	padding-left: 50px;
+}
+
+.pwd {
+	visibility: hidden;
+}
+
+#regForm input[type="password"] {
+    width: 200px;
+}
+*/
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%; 
+  width: 288px; 
+  z-index: 1;  
+  top: 150px; 
+  left: 0;
+  background-color: #000; /* Black*/
+  overflow-x: hidden; 
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #c0c0c0;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: white;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

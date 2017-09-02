@@ -1,0 +1,160 @@
+/*.center_box{
+  float:left;
+  min-width: 500px;
+  min-height: 500px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-width: 1px;
+  border: auto;
+  border-style: solid;
+  border-color: blue;
+  text-align:center;
+  margin-right: 10px;
+  margin-left: 50px;
+  margin-top: 40px;
+}
+
+.registration h1{
+    margin:auto;
+    line-height:51px;
+    vertical-align:middle;
+}
+
+.center_div{
+    margin: 0 auto;
+    width:90%
+}
+
+#regForm input[type="password"] {
+    width: 200px;
+}*/
+
+.pwd {
+  visibility: hidden;
+}
+
+.container
+{
+  padding:60px 15px;
+  font-family: 'Roboto', sans-serif;
+  /*overflow: hidden;*/
+  width: 100%;
+  height: 800px;
+  background-image:linear-gradient(to bottom right,#4568DC, #B06AB3);
+}
+.tile
+{
+  display:inline-block;
+  width:100%;
+  background-color:#000;
+  box-shadow:0px 0px 10px 3px rgba(0,0,0,0.1);
+  position:relative;
+  overflow:hidden;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+a:focus,a:hover
+{
+    text-decoration: none;
+}
+a
+{
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0px;
+}
+.form-control
+{
+    border-radius: 0px;
+    height: 40px;
+    background-color:#000;
+}
+.btn
+{
+    border-radius: 0px;
+    padding: 0px;
+    line-height: 40px;
+    font-size: 16px;
+    text-transform: uppercase;
+    /*width: 200px;*/
+    /*margin-left: 150px;*/
+}
+.signup
+{
+    position: absolute;
+    top: 20px;
+    right: -67%;
+    overflow: hidden;
+    transform: rotate(90deg);
+    padding: 20px 20px 20px 60px;
+    transition: all .5s ease-out;
+}
+.login
+{
+    position: absolute;
+    top: 20px;
+    left: -67%;
+    overflow: hidden;
+    transform: rotate(-90deg);
+    padding: 20px 60px 20px 20px;
+    transition: all .5s ease-out;
+}
+.btn-signup
+{
+    border-radius: 0px;
+    position: absolute;
+    right: -280px;
+    top: 270px;
+    width: 620px;
+    height: 50px;
+    transform: rotate(90deg);
+  /*text-decoration:line-through;*/
+}
+.show
+{
+    position: relative!important;
+    width: 100%;
+    top: auto;
+    left: auto;
+    right: 0px;
+    transform: rotate(-0deg);
+    transition: all .5s ease-out;
+}
+.login.show
+{
+    left: 0;
+    right: auto;
+}
+
+.btn-login
+{
+    border-radius: 0px;
+    position: absolute;
+    left: -280px;
+    top: 270px;
+    width: 620px;
+    height: 50px;
+    transform: rotate(-90deg);
+  /*text-decoration:line-through;*/
+}
+
+.logo
+{
+    display: block;
+    width: 200px;
+    margin: 0px auto 20px;
+}
+
+#loginSubmit , #loginTPSubmit {
+display:inline-block;
+}
+
+button:disabled {
+  background-color: #5bc0de;
+  border-color: #5bc0de;
+}
+

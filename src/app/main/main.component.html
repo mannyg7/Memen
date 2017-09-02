@@ -1,0 +1,118 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<!-- <div class="header">
+</div> -->
+
+<div class="row">
+	<div id="profile" class="rightcolumn">
+		<div class="header"></div>
+
+		<div class="card" style="float:right">
+			<a routerLink="/profile"><button>Profile Page</button></a>
+			&nbsp;
+			<a routerLink="/explore"><button id="topbutton">Explore </button></a>
+			&nbsp;
+			<button (click)="logout()" id="topbutton">Logout</button>
+		</div>
+
+		<div id="userInfo" class="card">
+			<h1 style="float:left">Hello {{currUserName}}!!</h1>
+			<img id="propic" src="">
+			<br/>
+			<label id="status">Status:</label><div id="headline" [innerHTML]="status"></div>
+			<textarea id="txtStatus" class="form-control z-depth-1" style="width: 100%"></textarea>
+			<br/>
+			<button (click)="updateStatus()">Update Status</button>
+		</div>
+
+		<div id="followers" class="card">
+			<h1>Friends</h1>
+			<input type="text" style="width:100%;border-radius: 5px;" (keyup)="resetU()" [(ngModel)]="newFollower"> 
+			<button id="addFollower" (click)="addFollower();">Follow User</button>
+			<div id="invalidUser" class="pwd alert alert-danger">Cannot add invalid user</div>
+			<br/>
+			<div class="folList" *ngFor="let fol of followerArray; let i = index">
+				<p><a [routerLink]="['/user', fol.name]"><button id="userbutton">{{fol.name}}</button></a>}</p>
+				<img id="folpic" [src]="fol.img">
+				<p id="headline"><label id="status">Status:</label>{{fol.status}}</p>
+				<button class="delUser" (click)="deleteFollower(i)">Unfollow</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="articles" class="leftcolumn">
+			<div class="card sharecard">
+				<h2>Share Something!</h2>
+				<textarea style="width:50%;min-height:50px;resize:none;" class="form-control z-depth-1" id="newArticle" [(ngModel)]="newArticle"></textarea>
+				<div style="margin-left:250px">
+					<label for="upload">
+						<img style="cursor: pointer;" src="assets/btn.png"/>
+						<input type="file" value="Upload a Picture" accept="image/*" id="upload" style="display:none;">
+					</label>
+
+					<button class="btn btn-dark" id="post" (click)="uploadPost()" style="display:inline-block">Post</button>
+					<button class="btn btn-dark" (click)="reset()" style="display:inline-block">Clear</button>
+				</div>
+			</div>
+
+
+			<table id="postTable">
+				<tr *ngFor="let articleP of articleArray; let i = index">
+					<div class="tablecard">
+						<td id="newArticle" class="card">
+							<tr id="newArticle" class="card">
+								<div class="media">
+									<img id="posterImg" [src]="getPic(articleP.author)">
+									<h4 style="display:inline-block"><a [routerLink]="['/user', articleP.author]"><button id="userbutton">{{articleP.author}}</button></a> &#183; 
+										<small style="font-size:15px;line-height:50px">{{articleP.date.substring(0,10)}}
+										</small>
+									</h4>
+									<div id="edit" *ngIf="articleP.author == currUserName" style="display:inline-block; float:right; font-size:12px;line-height:70px">
+										<!-- <span class="btn-group"> -->
+										<button [class]="articleP.id" id="editArt" (click)="editArticles(articleP.id, articleP.author)">Edit</button>
+										<button [class]="articleP.id" id="submitArt" style='display:none'  (click)="submitArticleEdit(articleP.id, articleP.id)">Submit</button>
+										<!-- </span> -->
+									</div>
+								</div>
+								<div class="fakeimg"><img id="articleImg" [src]="articleP.img" style="max-width: 600px"></div>
+								<p [id]="articleP.id" class="something" style="max-width: 600px">{{articleP.text}}</p>
+								<textarea [class]="'id'+i" style='display:none; width: 100%;'></textarea>
+								<div style="display:inline-block; margin-left:1%;">
+									<button [class]="'id'+i" style='display:none' (click)="submitComment(i, articleP.id, articleP.author)">Add Comment</button>
+									<button [class]="'id'+i" (click)="addComment(i)">Comment</button>
+									&nbsp;
+									<button class="btn-link" (click)="comments(i)">Show/Hide Comments</button>
+								</div>
+								
+							</tr>
+							<hr>
+							<tr *ngFor="let comment of articleP.comments; let ind = index">
+								<div [class]="'id'+i" [id]="'id'+i"> 
+									<div class="comCard" style="max-width: 500px">
+										<div>
+											<img id="posterImg" [src]="getPic(comment.author)">
+											<h4 style="display:inline-block"><a [routerLink]="['/user', comment.author]"><button id="userbutton">{{comment.author}}</button></a> &#183; 
+												<small style="font-size:15px;line-height:50px">{{articleP.date.substring(0,10)}}
+												</small>
+											</h4>
+											<div id="edit" *ngIf="comment.author == currUserName" style="display:inline-block; float:right; font-size:12px;line-height:70px">
+												<button [class]="comment.commentId" id="editCom" (click)="editComments(comment.commentId, comment.author)">Edit</button> 
+												<button [class]="comment.commentId" id="submitCom" style='display:none' (click)="submitComEdit(i, ind, comment.commentId, articleP.id, articleP.author)">Submit</button> 
+											</div>
+										</div>	
+										<p [id]="comment.commentId"> {{comment.text}}</p>
+										
+									</div>
+								</div>
+							</tr>
+							<br>
+						</td>
+					</div>
+				</tr>
+			</table>
+		</div>
+
+		</div>
+	</body>

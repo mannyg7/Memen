@@ -1,0 +1,53 @@
+
+<div class="container" >
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-6">
+			<div class="tile">
+				<div class="login show">
+		          <img src="assets/memepropic.jpg" class="logo">
+		          <form #loginForm="ngForm" ngNativeValidate>
+		            <div class="form-group">
+		              <input class="form-control" type = "text" name="username" placeholder="Username" required [(ngModel)]="loginInfo.username" #username="ngModel">
+		            </div>
+
+		            <div class="form-group">
+		              <input class="form-control" type = "password" placeholder="Password" id="loginPassword" name="password" required [(ngModel)]="loginInfo.password" #Loginpassword="ngModel">
+		            </div>
+
+		            <div id="invalidCreds" class="alert alert-danger hidden" > Not valid credentials</div>
+		            <div style="display:inline-block;text-align: center;width:100%">
+		            	<button id="loginSubmit" type="submit" class="btn btn-info" style="width: 49%; float:left"(click)="onSubmitLogin()" [disabled]="loginForm.invalid">Login</button>
+		            	<button id="loginTPSubmit" class="btn btn-info" style="width: 49%; float:right" (click)="onSubmitThirdPartyLogin()" [disabled]="loginForm.invalid">Google Login</button>
+		            </div>
+		            
+		          </form>
+		        </div><!-- login -->
+
+				<div class="signup hidden">
+        			<img src="assets/memepropic.jpg" class="logo">
+        			<form id="myForm" #regForm="ngForm" ngNativeValidate>
+							<div class="form-group">
+								<input id="name" type="text" name="name" class="form-control" required placeholder="Name" [(ngModel)]="accountInfo.name" #name="ngModel" style="width: 100%">
+							</div>
+
+							<div class="form-group">
+								<input class="form-control" type = "text"  name="displayName" required placeholder="Display Name" [(ngModel)]="accountInfo.displayName" #displayName="ngModel" style="width: 100%">
+							</div>
+
+							<div class="form-group">
+								<input class="form-control" type = "email" name="email" placeholder="Email" required email [(ngModel)]="accountInfo.email" #email="ngModel">
+							</div>
+
+							<div class="form-group">
+								<input class="form-control" type = "password" id="regPassword" placeholder="Password" name="password" required pattern="[a-zA-Z0-9]*" [(ngModel)]="accountInfo.password" #password="ngModel">
+							</div>
+							<div id="invalidReg" class="hidden alert alert-danger"> Problem registering your account. Try again.</div>
+						<button type="submit" id="regSubmit" class="btn btn-primary btn-block" (click)="onSubmitReg();" [disabled]="regForm.invalid">Submit</button>
+					</form>
+        		</div><!-- signup -->
+        		<span class="btn btn-info btn-signup" (click) = "onSignUp()">Signup</span>
+        		<span class="btn btn-info btn-login hidden" (click) = "onLogIn()">Login</span>
+			</div><!-- tile -->
+		</div><!-- col-6 -->
+	</div><!-- row -->
+</div><!-- container -->

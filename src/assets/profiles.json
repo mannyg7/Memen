@@ -1,0 +1,6 @@
+{"profiles": [
+	{"name": "mrg7", "displayName": "Manny", "email": "mrg7@rice.edu", "phone": "123-123-1234", "dob": "03/28/1986", "zipcode": "77777", "password": "let-me-in", "passwordConfirm": "let-me-in"},
+	{"name": "php4", "displayName": "Penny", "email": "php4@rice.edu", "phone": "123-123-1234", "dob": "03/28/1986", "zipcode": "77777", "password": "ugh-bleh-wtf", "passwordConfirm": "ugh-bleh-wtf"},
+	{"name": "aas3", "displayName": "Amy", "email": "aas3@rice.edu", "phone": "123-123-1234", "dob": "03/28/1986", "zipcode": "77777", "password": "log-me-in", "passwordConfirm": "log-me-in"}
+]
+}
