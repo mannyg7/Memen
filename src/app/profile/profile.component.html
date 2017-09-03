@@ -74,7 +74,7 @@
 					<input class="form-control" type = "password" id="loginPassword" name="password" required [(ngModel)]="loginInfo.password" #Loginpassword="ngModel">
 				</div>
 
-				<div id="invalidCreds" class="pwd alert alert-danger hidden"> Not valid credentials.</div>
+				<div id="invalidCreds" class="pwd"> Not valid credentials.</div>
 
 				<div class="">
 					<button id="loginSubmit" type="submit" class="bottom btn btn-info" (click)="onSubmitLogin()" [disabled]="loginForm.invalid">Link</button>

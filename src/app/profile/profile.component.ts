@@ -36,37 +36,31 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.http.get("https://ricebookmrg7.herokuapp.com/avatars", this.options).subscribe(data =>  {
-        if (data.status != 200) {
-            (<HTMLImageElement>document.getElementById("propic")).src = this.initAvatar;
-        } else {
+        if (data.status == 200) {
           (<HTMLImageElement>document.getElementById("propic")).src = data.json().avatar[0];
         }
+    }, err => {
+        (<HTMLImageElement>document.getElementById("propic")).src = this.initAvatar;
     });
 
     this.http.get("https://ricebookmrg7.herokuapp.com/email", this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        } else {
+        if (data.status == 200) {
           this.currAccountInfo['name'] = data.json().username;
           this.currAccountInfo['email'] = data.json().email;
         }
     });
 
     this.http.get("https://ricebookmrg7.herokuapp.com/zipcode", this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        } else {
+        if (data.status == 200) {
           this.currAccountInfo['zipcode'] = data.json().zipcode;
         }
     });
 
     this.http.get("https://ricebookmrg7.herokuapp.com/dob", this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        } else {
+        if (data.status == 200) {
           this.currAccountInfo['dob'] = data.json().dob;
         }
     });
-
-    //var inputElement = document.getElementById("upload");
-    //inputElement.addEventListener("change", this.handleFiles, false);
   }
 
   reset() {
@@ -78,11 +72,11 @@ export class ProfileComponent implements OnInit {
     const fd = new FormData();
     fd.append('image', file);
     this.http.post("https://ricebookmrg7.herokuapp.com/avatar", fd, this.options).subscribe(data =>  {
-        if (data.status != 200) {
-            (<HTMLImageElement>document.getElementById("propic")).src = this.initAvatar;
-        } else {
+        if (data.status == 200) {
           (<HTMLImageElement>document.getElementById("propic")).src = data.json().avatar;
         }
+    }, err => {
+        (<HTMLImageElement>document.getElementById("propic")).src = this.initAvatar;
     });
   }
 
@@ -95,30 +89,25 @@ export class ProfileComponent implements OnInit {
 
   	for (let key in this.accountInfo) {
   		if (this.accountInfo[key] != null && this.accountInfo[key] != "") {
+
         // if it is password checks for confirmation matching
   			if(key == "password") {
             this.http.put("https://ricebookmrg7.herokuapp.com/password", this.accountInfo, this.options).subscribe(data =>  {
-                if (data.status != 200) {
-                    //show error
-                } else {
+                if (data.status == 200) {
                   this.currAccountInfo[key] = data.json().password;
                   this.accountInfo[key] = '';
                 }
             });
         } else if(key == "zipcode") {
             this.http.put("https://ricebookmrg7.herokuapp.com/zipcode", this.accountInfo, this.options).subscribe(data =>  {
-                if (data.status != 200) {
-                    //show error
-                } else {
+                if (data.status == 200) {
                   this.currAccountInfo[key] = data.json().zipcode;
                   this.accountInfo[key] = '';
                 }
             });
         } else if(key == "email") {
             this.http.put("https://ricebookmrg7.herokuapp.com/email", this.accountInfo, this.options).subscribe(data =>  {
-                if (data.status != 200) {
-                    //show error
-                } else {
+                if (data.status == 200) {
                   this.currAccountInfo[key] = data.json().email;
                   this.accountInfo[key] = '';
                 }
@@ -135,12 +124,11 @@ export class ProfileComponent implements OnInit {
     document.getElementById("invalidCreds").style.visibility = "hidden";
 
     // Check login creds are in the damn databsae
-    this.http.post("https://ricebookmrg7.herokuapp.com/link", this.loginInfo, this.options).subscribe(data =>  {
-        if (data.status != 200) {
-            document.getElementById("invalidCreds").style.visibility = "visible";
-        } else {
-        }
+    this.http.post("https://ricebookmrg7.herokuapp.com/link", this.loginInfo, this.options).subscribe(data =>  {}, err => {
+      document.getElementById("invalidCreds").style.visibility = "visible";
     });
+
+    /* Use for localhost*/
     // this.login({username: this.loginInfo.username, password: this.loginInfo.password});
   }
 

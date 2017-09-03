@@ -24,15 +24,12 @@
 }
 
 body {
-  /*background-image:linear-gradient(to bottom right,#4568DC, #B06AB3);*/
   position: fixed;
   top: 0px;
   bottom: 0px;
   left: 0px;
   right: 0px;
   overflow: auto;
-  /*background-color: black;*/
-
   height: 100%;
 }
 .profilecard {
@@ -51,7 +48,6 @@ button {
   display: inline-block;
   padding: 8px;
   color: white;
-  /*background-color: #000;*/
   text-align: center;
   cursor: pointer;
   width: 100%;
@@ -83,18 +79,22 @@ button {
 	float: left;
 }
 
-/*.paddingLeft {
+.paddingLeft {
 	padding-left: 50px;
 }
 
 .pwd {
 	visibility: hidden;
+  text-align: center;
+  color: red;
 }
 
 #regForm input[type="password"] {
     width: 200px;
 }
-*/
+
+
+/*Side navigation menu source: https://www.w3schools.com/howto/howto_js_sidenav.asp*/
 
 /* The side navigation menu */
 .sidenav {
