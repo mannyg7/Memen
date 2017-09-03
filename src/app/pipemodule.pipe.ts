@@ -13,7 +13,6 @@ export class PipemodulePipe implements PipeTransform {
   constructor(private http: Http) {}
 
   transform(url: string) {
-  console.log("in transform: " + url);
   const headers = new Headers(); 
   headers.append('Access-Control-Allow-Origin', 'https://mrg7comp431folkzonesite1.surge.sh');
   return this.http.get("https://ricebookmrg7.herokuapp.com/avatars/" + url, new RequestOptions({headers: headers, withCredentials: true}));

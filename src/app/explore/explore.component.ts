@@ -51,7 +51,6 @@ export class ExploreComponent implements OnInit {
 
     this.http.get("https://ricebookmrg7.herokuapp.com/explore/0", this.options).subscribe(data =>  {
         if (data.status == 200) {
-          console.log(data.json().articles);
           this.articleArray = data.json().articles[0];
         }
     });
@@ -59,11 +58,8 @@ export class ExploreComponent implements OnInit {
   }
 
   onScrollDown (ev) {
-    console.log('scrolled down!!', ev);
     this.http.get("https://ricebookmrg7.herokuapp.com/explore/" + this.articleArray.length, this.options).subscribe(data =>  {
         if (data.status == 200) {
-          console.log(data.json());
-          console.log(data.json().articles[0]);
           if (data.json().articles[0].length == 0) {
             this.finished = true;
           }
