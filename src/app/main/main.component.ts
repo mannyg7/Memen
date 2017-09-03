@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
 
   articleArray: Array<any> = [];
   allarticlesArray: Array<any> = [];
-  newArticle: string = 'Got something funny?';
+  newArticle: string = '';
   searchString: string = "";
   newFollower: string = '';
   articles: Array<any> = [];
@@ -24,7 +24,7 @@ export class MainComponent implements OnInit {
   date;
   currUser: string;
   currUserName: string;
-  currPic: string;
+  currPic = "http://pictify.saatchigallery.com/files/works/black-square-1-1349462611_org.jpg";
   status: string = "";
   followerUserArray: Array<any> = [];
   followerArray: Array<any> = [];
@@ -44,7 +44,7 @@ export class MainComponent implements OnInit {
         if (data.status != 200) {
             (<HTMLImageElement>document.getElementById("propic")).src = this.initAvatar;
         } else {
-          (<HTMLImageElement>document.getElementById("propic")).src = data.json().avatar[0];
+          //(<HTMLImageElement>document.getElementById("propic")).src = data.json().avatar[0];
           this.currPic = data.json().avatar[0];
         }
     });

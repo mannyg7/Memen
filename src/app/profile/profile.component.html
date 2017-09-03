@@ -5,23 +5,23 @@
 		<div id="mySidenav" class="sidenav">
 		  <!-- <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a> -->
 		  <a href="javascript:void(0)"(click)="aboutMe()">About Me</a>
-		  <a href="javascript:void(0)" (click)="updateDetails()">Update Details</a>
-		  <a href="javascript:void(0)" (click)="updateProPic()">Update Profile Picture</a>
-		  <a href="javascript:void(0)" (click)="accountLinking()">Account Linking</a>
+		  <a href="javascript:void(0)" (click)="updateDetails(update)">Update Details</a>
+		  <a href="javascript:void(0)" (click)="updateProPic(ppUpdate)">Update Profile Picture</a>
+		  <a href="javascript:void(0)" (click)="accountLinking(link)">Account Linking</a>
 		  <a routerLink="/main">Back to Main Page</a>
 		</div>
 	</div>
 	<div class="rightcol">
 		<br><br>
 		<div id="aboutme" class="profilecard">
-			<img id="propic" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Sunflower_from_Silesia2.jpg" style="width: 100%">
+			<img id="propic" src="" style="width: 100%">
 			<h1>Name: {{currAccountInfo.name}}</h1>
 			<p>Display Name: {{currAccountInfo.displayName}}</p>
 			<p id="emailP">Email Address: {{currAccountInfo.email}}</p>
 			<br>
 		</div>
 
-		<div id="pp" class="profilecard hidden">
+		<div #ppUpdate id="pp" class="profilecard hidden">
 		<h1>Update Profile Picture</h1>
 		<form id="file-form" method="post" enctype="multipart/form-data">
 				<label id="label">
@@ -32,7 +32,7 @@
 			</form>
 	</div>
 
-	<div id="details" class="profilecard hidden">
+	<div #update id="details" class="profilecard hidden">
 		<h1>Update Current Details</h1>
 		<form id="myForm" #regForm="ngForm" (ngSubmit)="onSubmitReg(regForm)">
 			<div class="left">
@@ -60,7 +60,7 @@
 		</form>
 	</div>
 	
-	<div id="al" class="profilecard hidden">
+	<div #link id="al" class="profilecard hidden">
 		<h1>Link your multiple accounts</h1>
 			If you have multiple accounts and would like to merge them,log in with your other account.
 			<form #loginForm="ngForm">

@@ -13,7 +13,7 @@
 		</div>
 		<div id="userInfo" class="card">
 			<h1 style="float:left">{{userName}}</h1>
-			<img id="propic" [src]="avatar">
+			<img id="propic" [src]="avatar" ngShow="avatar !== undefined">
 			<br/>
 			<label id="status">Status:</label><div id="headline" [innerHTML]="status"></div>
 			<br/>

@@ -52,20 +52,20 @@ export class AuthComponent implements OnInit {
   onSubmitReg() {
     document.getElementById("invalidReg").style.visibility = "hidden";
     document.getElementById("invalidCreds").style.visibility = "hidden";
+    let loginCreds = {username: this.accountInfo.name, password: this.accountInfo.password};
     // Checks if the other other authorizations are valid
-
-      this.http.post("https://ricebookmrg7.herokuapp.com/register", this.accountInfo, this.options).subscribe(data =>  {
-        if (data.status != 200) {
-            document.getElementById("invalidReg").style.visibility = "visible";
-        }
+      this.http.post("https://ricebookmrg7.herokuapp.com/register", this.accountInfo, this.options).subscribe(data =>  {}, err => {
+        console.log(err);
+        document.getElementById("invalidReg").style.visibility = "visible";
       });
       // Check login creds are in the database
-      this.http.post("https://ricebookmrg7.herokuapp.com/login", {username: this.accountInfo.name, password: this.accountInfo.password}, this.options).subscribe(data =>  {
-          if (data.status != 200) {
-              document.getElementById("invalidCreds").style.visibility = "visible";
-          } else {
+      this.http.post("https://ricebookmrg7.herokuapp.com/login", loginCreds, this.options).subscribe(data =>  {
+          if (data.status == 200) {
             this.router.navigate(["/main"]);
           }
+      }, err => {
+          console.log(err);
+          document.getElementById("invalidCreds").style.visibility = "visible";
       });
   }
 
@@ -73,16 +73,17 @@ export class AuthComponent implements OnInit {
   Function performed when the user clicks login.
   */
   onSubmitLogin() {
-    document.getElementById("invalidCreds").classList.add("hidden");
+    document.getElementById("invalidCreds").style.visibility = "hidden";
     //console.log(this.headers);
     // Check login creds are in the database
     this.http.post("https://ricebookmrg7.herokuapp.com/login", this.loginInfo, this.options).subscribe(data =>  {
-        if (data.status != 200) {
-            document.getElementById("invalidCreds").classList.remove("hidden");
-        } else {
+        if (data.status == 200) {
           this.router.navigate(["/main"]);
         }
-    });
+    }, err => {
+          console.log(err);
+          document.getElementById("invalidCreds").style.visibility = "visible";
+      });
     //this._authService.login({username: this.loginInfo.username, password: this.loginInfo.password});
     //this.router.navigate(["/main"]);
   }
@@ -93,7 +94,7 @@ export class AuthComponent implements OnInit {
   }
 
   onSignUp() {
-    document.getElementById("invalidCreds").classList.add("hidden");
+    document.getElementById("invalidCreds").style.visibility = "hidden";
     document.getElementsByClassName("btn-signup")[0].classList.add("hidden");
     document.getElementsByClassName("signup")[0].classList.remove("hidden");
     document.getElementsByClassName("signup")[0].classList.add("show");
@@ -103,7 +104,7 @@ export class AuthComponent implements OnInit {
   }
   
   onLogIn() {
-    document.getElementById("invalidReg").classList.add("hidden");
+    document.getElementById("invalidReg").style.visibility = "hidden";
     document.getElementsByClassName("btn-signup")[0].classList.remove("hidden");
     document.getElementsByClassName("signup")[0].classList.remove("show");
     document.getElementsByClassName("signup")[0].classList.add("hidden");

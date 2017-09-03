@@ -14,7 +14,7 @@
 		              <input class="form-control" type = "password" placeholder="Password" id="loginPassword" name="password" required [(ngModel)]="loginInfo.password" #Loginpassword="ngModel">
 		            </div>
 
-		            <div id="invalidCreds" class="alert alert-danger hidden" > Not valid credentials</div>
+		            <div id="invalidCreds" class="danger" style="visibility:hidden"> Not valid credentials</div>
 		            <div style="display:inline-block;text-align: center;width:100%">
 		            	<button id="loginSubmit" type="submit" class="btn btn-info" style="width: 49%; float:left"(click)="onSubmitLogin()" [disabled]="loginForm.invalid">Login</button>
 		            	<button id="loginTPSubmit" class="btn btn-info" style="width: 49%; float:right" (click)="onSubmitThirdPartyLogin()" [disabled]="loginForm.invalid">Google Login</button>
@@ -41,7 +41,7 @@
 							<div class="form-group">
 								<input class="form-control" type = "password" id="regPassword" placeholder="Password" name="password" required pattern="[a-zA-Z0-9]*" [(ngModel)]="accountInfo.password" #password="ngModel">
 							</div>
-							<div id="invalidReg" class="hidden alert alert-danger"> Problem registering your account. Try again.</div>
+							<div id="invalidReg" class="danger" style="visibility:hidden"> Problem registering your account. Try again.</div>
 						<button type="submit" id="regSubmit" class="btn btn-primary btn-block" (click)="onSubmitReg();" [disabled]="regForm.invalid">Submit</button>
 					</form>
         		</div><!-- signup -->

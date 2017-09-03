@@ -6,7 +6,6 @@ import { HttpModule } from "@angular/http";
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ArticleComponent } from './article/article.component';
 import { AuthComponent } from './auth/auth.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
@@ -22,7 +21,6 @@ import { SafeurlPipe } from './safeurl.pipe';
     AppComponent,
     MainComponent,
     ProfileComponent,
-    ArticleComponent,
     AuthComponent,
     UserComponent,
     ExploreComponent,

@@ -16,11 +16,6 @@ body {
   font-family: Arial;
   background-color: black;
   overflow: hidden;
-  /*background-image:linear-gradient(to right, #0052D4, #4364F7, #6FB1FC);*/
-  /*background-color: black;*/
-  /*background-image: url(https://www.masmediadesign.com/wp-content/uploads/2016/06/2016-08-25-1472147955-6786115-designheader.jpg);*/
-/*  background-repeat: no-repeat;
-  background-size: auto;*/
   height: 100%;
   position: fixed;
   top: 0px;
@@ -31,15 +26,12 @@ body {
 
 /* Add a card effect for articles */
 .card {
-  /*background-color: white;*/
    width: 100%;
    overflow: hidden;
-   /*background-color: white;*/
 }
 .fakeimg {
   max-width: 600px;
   text-align: left;
-  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
 }
 
 .leftcolumn {   
@@ -47,13 +39,7 @@ body {
   width:80%;
   max-height: 800px;
   overflow: scroll;
-  /*background-image: url(http://www.1upbaby.com/wp-content/uploads/2015/10/rage-300x300.jpg);*/
-  /*background-repeat: no-repeat;
-  background-size: 100% 100%;*/
   background-color: white;
-  /*background-color: white;*/
-  /*flex: 1 1 auto;*/
-  /*margin-left: 20px;*/
 }
 
 
@@ -66,8 +52,6 @@ body {
   overflow: scroll;
   margin-top: -10px;
   display: inline-block;
-  /*background-color: black;*/
-  /*flex: 1 1 auto;*/
   
 }
 
@@ -80,10 +64,6 @@ body {
 
 .row{
   margin: 2px;
-  /*background-image: url(https://backgroundcheckall.com/wp-content/uploads/2017/12/rainbow-meme-background-5.jpg);*/
-  /**/
-  /*display: flex;*/
-  /*flex-direction: row;*/
 }
 
 #propic {
@@ -91,50 +71,14 @@ body {
   width: 175px;
 }
 
-/*h4 {
-  color: #444;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-}*/
-
 #status {
   font-weight: lighter;
 }
-
-/*#postTable {
-  padding-top: 100px;
-}*/
-
-/*#searchbar {
-  width: 580px;
-}*/
-
-/*#newArticle {
-  width: 650px;
-  min-height: 100px;
-
-}*/
-
-/*#articles {
-  padding-left: 50px;
-  width: 75%;
-
-}
-
-#profile {
-  width: 25%;
-}*/
 
 #folpic {
   width: 200px;
   height: 200px;
 }
-
-/*#articleImg {
-  max-width: 300px;
-  max-height: 300px;
-  padding-left: 20px;
-}*/
 
 .pwd {
   visibility: hidden;

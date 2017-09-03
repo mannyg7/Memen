@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
   status: string = "";
   headers;
   options;
-  avatar= "http://www.lumineers.me/images/core/profile-image-zabadnesterling.gif";
+  avatar= "http://pictify.saatchigallery.com/files/works/black-square-1-1349462611_org.jpg";
   articleArray: Array<any> = [];
 
   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private main: MainComponent, private _mainService: MainService) {
@@ -29,36 +29,30 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
   	this.http.get("https://ricebookmrg7.herokuapp.com/email", this.options).subscribe(data =>  {
-        if (data.status != 200) {
-          console.log(data);
-        } else {
+        if (data.status == 200) {
           this.currUserName = data.json().username;
         }
     });
   	this.route.paramMap.subscribe(params => {
       this.userName = params.get("user");
       this.http.get("https://ricebookmrg7.herokuapp.com/articles/" + this.userName, this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        	console.log(data);
-        } else {
+        if (data.status == 200) {
           this.articleArray = data.json().articles;
         }
     });
 
     this.http.get("https://ricebookmrg7.herokuapp.com/headlines/" + this.userName, this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        	console.log(data);
-        } else {
+        if (data.status == 200) {
           this.status = data.json().headlines[0];
         }
     });
     this.http.get("https://ricebookmrg7.herokuapp.com/avatars/" + this.userName, this.options).subscribe(data =>  {
-	      if (data.status != 200) {
-	      	console.log(data);
-	      } else {
+	      if (data.status == 200) {
 	        this.avatar = data.json().avatar[0];
 	      }
 	  });
+    }, err => {
+      console.log(err);
     });
   }
 

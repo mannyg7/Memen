@@ -21,7 +21,7 @@ export class ExploreComponent implements OnInit {
   status: string = "";
   currUserName: string;
   finished = false;
-  avatar= "http://www.lumineers.me/images/core/profile-image-zabadnesterling.gif";
+  avatar= "http://pictify.saatchigallery.com/files/works/black-square-1-1349462611_org.jpg";
   elem: HTMLElement = <HTMLElement>document.getElementsByClassName('leftcolumn')[0];
   headers;
   options;

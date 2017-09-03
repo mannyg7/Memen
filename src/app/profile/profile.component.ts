@@ -88,8 +88,6 @@ export class ProfileComponent implements OnInit {
 
   /*Updates the file*/
   onSubmitReg(f: NgForm) {
-    document.getElementById("pwdsWrong").style.visibility = "hidden";
-
     // Does nothing is the form is invalid
   	if (f.invalid) {
   		return;
@@ -99,10 +97,6 @@ export class ProfileComponent implements OnInit {
   		if (this.accountInfo[key] != null && this.accountInfo[key] != "") {
         // if it is password checks for confirmation matching
   			if(key == "password") {
-  				if (this.accountInfo[key] != this.accountInfo['passwordConfirm']) {
-            document.getElementById("pwdsWrong").style.visibility = "visible";
-  					continue;
-  				} else {
             this.http.put("https://ricebookmrg7.herokuapp.com/password", this.accountInfo, this.options).subscribe(data =>  {
                 if (data.status != 200) {
                     //show error
@@ -111,7 +105,6 @@ export class ProfileComponent implements OnInit {
                   this.accountInfo[key] = '';
                 }
             });
-          }
         } else if(key == "zipcode") {
             this.http.put("https://ricebookmrg7.herokuapp.com/zipcode", this.accountInfo, this.options).subscribe(data =>  {
                 if (data.status != 200) {
@@ -180,21 +173,28 @@ export class ProfileComponent implements OnInit {
     document.getElementById("al").classList.add("hidden");
   }
 
-  updateDetails() {
+  updateDetails(el: HTMLElement) {
     document.getElementById("pp").classList.add("hidden");
     document.getElementById("details").classList.remove("hidden");
     document.getElementById("al").classList.add("hidden");
+    this.scroll(el);
   }
 
-  updateProPic() {
+  updateProPic(el: HTMLElement) {
     document.getElementById("pp").classList.remove("hidden");
     document.getElementById("details").classList.add("hidden");
     document.getElementById("al").classList.add("hidden");
+    this.scroll(el);
   }
 
-  accountLinking() {
+  accountLinking(el: HTMLElement) {
     document.getElementById("pp").classList.add("hidden");
     document.getElementById("details").classList.add("hidden");
     document.getElementById("al").classList.remove("hidden");
+    this.scroll(el);
+  }
+
+  scroll(el: HTMLElement) {
+    el.scrollIntoView();
   }
 }

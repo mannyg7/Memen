@@ -46,6 +46,7 @@ body {
   float: right;
   width:80%;
   max-height: 800px;
+  min-height: 800px;
   overflow: scroll;
   /*background-image: url(http://www.1upbaby.com/wp-content/uploads/2015/10/rage-300x300.jpg);*/
   /*background-repeat: no-repeat;
@@ -79,7 +80,7 @@ body {
 }
 
 .row{
-	margin: 2px;
+  margin: 2px;
   /*background-image: url(https://backgroundcheckall.com/wp-content/uploads/2017/12/rainbow-meme-background-5.jpg);*/
   /**/
   /*display: flex;*/
@@ -87,53 +88,53 @@ body {
 }
 
 #propic {
-	height: 200px;
-	width: 175px;
+  height: 200px;
+  width: 175px;
 }
 
-/*h4 {
+h4 {
   color: #444;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
-}*/
+}
 
 #status {
-	font-weight: lighter;
+  font-weight: lighter;
 }
 
 /*#postTable {
-	padding-top: 100px;
+  padding-top: 100px;
 }*/
 
 /*#searchbar {
-	width: 580px;
+  width: 580px;
 }*/
 
 /*#newArticle {
-	width: 650px;
-	min-height: 100px;
+  width: 650px;
+  min-height: 100px;
 
 }*/
 
 /*#articles {
-	padding-left: 50px;
-	width: 75%;
+  padding-left: 50px;
+  width: 75%;
 
 }
 
 #profile {
-	width: 25%;
+  width: 25%;
 }*/
 
 #folpic {
-	width: 200px;
-	height: 200px;
+  width: 200px;
+  height: 200px;
 }
 
 /*#articleImg {
-	max-width: 300px;
-	max-height: 300px;
-	padding-left: 20px;
+  max-width: 300px;
+  max-height: 300px;
+  padding-left: 20px;
 }*/
 
 .pwd {
