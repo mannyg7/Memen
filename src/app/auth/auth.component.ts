@@ -36,6 +36,7 @@ export class AuthComponent implements OnInit {
   loginInfo = {username: '', password: ''};
 
   ngOnInit(): void {
+    /*use for localhost*/
     //localStorage.clear();
   }
 
@@ -74,7 +75,7 @@ export class AuthComponent implements OnInit {
   */
   onSubmitLogin() {
     document.getElementById("invalidCreds").style.visibility = "hidden";
-    //console.log(this.headers);
+
     // Check login creds are in the database
     this.http.post("https://ricebookmrg7.herokuapp.com/login", this.loginInfo, this.options).subscribe(data =>  {
         if (data.status == 200) {
@@ -84,12 +85,16 @@ export class AuthComponent implements OnInit {
           console.log(err);
           document.getElementById("invalidCreds").style.visibility = "visible";
       });
+
+    /*use for localhost*/
     //this._authService.login({username: this.loginInfo.username, password: this.loginInfo.password});
     //this.router.navigate(["/main"]);
   }
 
   onSubmitThirdPartyLogin() {
     window.location.href="http://ricebookmrg7.herokuapp.com/login/google";
+
+    /*use for localhost*/
     //this.http.get("http://localhost:3000/login/google", this.options)
   }
 
