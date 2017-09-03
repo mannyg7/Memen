@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   currAccountInfo = {name: '', displayName: '', email: '', phone: '123-123-1234', dob: '', zipcode: '', password: '', passwordConfirm: ''};
   loginInfo = {username: '', password: ''};
   name = this.currAccountInfo.name;
-  initAvatar: string = "http://www.lumineers.me/images/core/profile-image-zabadnesterling.gif";
+  initAvatar: string = "https://www.lumineers.me/images/core/profile-image-zabadnesterling.gif";
   headers;
   options;
   constructor(private http: Http) {

@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
   status: string = "";
   headers;
   options;
-  avatar= "http://pictify.saatchigallery.com/files/works/black-square-1-1349462611_org.jpg";
+  avatar= "https://hyperallergic.com/wp-content/uploads/2015/11/Allais_blacksquare-HOME.jpg";
   articleArray: Array<any> = [];
 
   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private main: MainComponent, private _mainService: MainService) {

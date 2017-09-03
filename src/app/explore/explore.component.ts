@@ -21,7 +21,7 @@ export class ExploreComponent implements OnInit {
   status: string = "";
   currUserName: string;
   finished = false;
-  avatar= "http://pictify.saatchigallery.com/files/works/black-square-1-1349462611_org.jpg";
+  avatar= "https://hyperallergic.com/wp-content/uploads/2015/11/Allais_blacksquare-HOME.jpg";
   elem: HTMLElement = <HTMLElement>document.getElementsByClassName('leftcolumn')[0];
   headers;
   options;

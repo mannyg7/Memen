@@ -24,7 +24,7 @@ export class MainComponent implements OnInit {
   date;
   currUser: string;
   currUserName: string;
-  currPic = "http://pictify.saatchigallery.com/files/works/black-square-1-1349462611_org.jpg";
+  currPic = "https://hyperallergic.com/wp-content/uploads/2015/11/Allais_blacksquare-HOME.jpg";
   status: string = "";
   followerUserArray: Array<any> = [];
   followerArray: Array<any> = [];
@@ -32,7 +32,7 @@ export class MainComponent implements OnInit {
   tempArray: Array<any> = [];
   headers;
   options;
-  initAvatar: string = "http://www.lumineers.me/images/core/profile-image-zabadnesterling.gif";
+  initAvatar: string = "https://www.lumineers.me/images/core/profile-image-zabadnesterling.gif";
   constructor(private http: Http, private _mainService: MainService, private router: Router) {
     this.headers = new Headers();
     this.headers.append('Access-Control-Allow-Origin', 'https://mrg7comp431folkzonesite1.surge.sh');
