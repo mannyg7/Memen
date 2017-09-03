@@ -41,23 +41,19 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.http.get("https://ricebookmrg7.herokuapp.com/avatars", this.options).subscribe(data =>  {
-        if (data.status != 200) {
-            (<HTMLImageElement>document.getElementById("propic")).src = this.initAvatar;
-        } else {
-          //(<HTMLImageElement>document.getElementById("propic")).src = data.json().avatar[0];
+        if (data.status == 200) {
           this.currPic = data.json().avatar[0];
         }
+    }, err => {
+        (<HTMLImageElement>document.getElementById("propic")).src = this.initAvatar;
     });
     this.http.get("https://ricebookmrg7.herokuapp.com/email", this.options).subscribe(data =>  {
-        if (data.status != 200) {
-          console.log(data);
-        } else {
+        if (data.status == 200) {
           this.currUserName = data.json().username;
         }
     });
     this.http.get("https://ricebookmrg7.herokuapp.com/following", this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        } else {
+        if (data.status == 200) {
           this.currUser = data.json().username;
           this.followerUserArray = data.json().following;
         }
@@ -66,16 +62,14 @@ export class MainComponent implements OnInit {
           this.follower = {id: '', name: '', img: "", status: ""}
           this.follower['id'] = fol;
           this.http.get("https://ricebookmrg7.herokuapp.com/avatars/" + fol, this.options).subscribe(data =>  {
-              if (data.status != 200) {
-              } else {
+              if (data.status == 200) {
                 this.pictureArray[String(fol)] = data.json().avatar[0];
                 this.follower['name'] = fol;
                 this.follower['img'] = data.json().avatar[0];
               }
           });
           this.http.get("https://ricebookmrg7.herokuapp.com/headlines/" + fol, this.options).subscribe(data =>  {
-              if (data.status != 200) {
-              } else {
+              if (data.status == 200) {
                 this.follower['status'] = data.json().headlines[0];
               }
           });
@@ -84,15 +78,13 @@ export class MainComponent implements OnInit {
     });
 
     this.http.get("https://ricebookmrg7.herokuapp.com/headlines", this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        } else {
+        if (data.status == 200) {
           this.status = data.json().headlines[0];
         }
     });
 
     this.http.get("https://ricebookmrg7.herokuapp.com/articles", this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        } else {
+        if (data.status == 200) {
           this.articleArray = data.json().articles;
           this.allarticlesArray = data.json().articles;
         }
@@ -115,18 +107,13 @@ export class MainComponent implements OnInit {
   	var val = <HTMLTextAreaElement>(document.getElementById("txtStatus"))
   	var txt = val.value;
   	this.status = txt;
-    this.http.put("https://ricebookmrg7.herokuapp.com/headline", {headline: this.status} ,this.options).subscribe(data =>  {
-        if (data.json().status != 200) {
-        } else {
-        }
-    });
+    this.http.put("https://ricebookmrg7.herokuapp.com/headline", {headline: this.status} ,this.options).subscribe(data =>  {});
     val.value = '';
   }
 
   logout() {
     this.http.put("https://ricebookmrg7.herokuapp.com/logout", {}, this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        } else {
+        if (data.status == 200) {
           this.router.navigate(["/landing"]);
         }
     });
@@ -140,8 +127,7 @@ export class MainComponent implements OnInit {
     if ((<HTMLInputElement>document.getElementById('upload')).files == null || (<HTMLInputElement>document.getElementById('upload')).files.length ==0) {
       var fd = {text: this.newArticle}
       this.http.post("https://ricebookmrg7.herokuapp.com/article", fd ,this.options).subscribe(data =>  {
-          if (data.status != 200) {
-          } else {
+          if (data.status == 200) {
             this.newArticle = '';
             (<HTMLInputElement>document.getElementById('upload')).value = "";
             this.http.get("https://ricebookmrg7.herokuapp.com/articles", this.options).subscribe(data =>  {
@@ -165,8 +151,7 @@ export class MainComponent implements OnInit {
 
   addPost(payload) {
     this.http.post("https://ricebookmrg7.herokuapp.com/articleImg", payload ,this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        } else {
+        if (data.status == 200) {
           this.newArticle = '';
           (<HTMLInputElement>document.getElementById('upload')).value = "";
           this.http.get("https://ricebookmrg7.herokuapp.com/articles", this.options).subscribe(data =>  {
@@ -199,8 +184,7 @@ export class MainComponent implements OnInit {
     document.getElementById(ind).innerHTML = h;
     
     this.http.put("https://ricebookmrg7.herokuapp.com/articles/" + artId, {text: h, commentId: ind} ,this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        } else {
+        if (data.status == 200) {
           this.http.get("https://ricebookmrg7.herokuapp.com/articles", this.options).subscribe(data =>  {
                                 if (data.status != 200) {
                                 } else {
@@ -230,8 +214,7 @@ export class MainComponent implements OnInit {
     document.getElementById(ind).innerHTML = h;
     
     this.http.put("https://ricebookmrg7.herokuapp.com/articles/" + artId, {text: h} ,this.options).subscribe(data =>  {
-        if (data.json().status != 200) {
-        } else {
+        if (data.json().status == 200) {
           this.allarticlesArray = data.json().body.articles;
         }
     });
@@ -253,8 +236,7 @@ export class MainComponent implements OnInit {
     (<HTMLElement>elems[2]).style.display = "inline-block";
 
     this.http.put("https://ricebookmrg7.herokuapp.com/articles/" + artId, {text: k, commentId: "-1"} ,this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        } else {
+        if (data.status == 200) {
           this.http.get("https://ricebookmrg7.herokuapp.com/articles", this.options).subscribe(data =>  {
                                 if (data.status != 200) {
                                 } else {
@@ -273,30 +255,22 @@ export class MainComponent implements OnInit {
     this.follower = {id: '', name: '', img: "", status: ""}
   	if (this.newFollower != '') {
         this.http.put("https://ricebookmrg7.herokuapp.com/following/" + this.newFollower, {}, this.options).subscribe(data =>  {
-            if (data.status != 200) {
-              // show some error
-            } else {
+            if (data.status == 200) {
               this.followerUserArray = data.json().following;
               this.follower['id'] = this.newFollower;
               this.follower['name'] = this.newFollower;
               this.http.get("https://ricebookmrg7.herokuapp.com/avatars/" + this.newFollower, this.options).subscribe(data =>  {
-                  if (data.status != 200) {
-                    // show some error
-                  } else {
+                  if (data.status == 200) {
                     this.follower['img'] = data.json().avatar[0];
                     this.pictureArray[this.newFollower] = data.json().avatar[0];
                     this.http.get("https://ricebookmrg7.herokuapp.com/headlines/" + this.newFollower, this.options).subscribe(data =>  {
-                          if (data.status != 200) {
-                            // show some error
-                          } else {
+                          if (data.status == 200) {
                             this.follower['status'] = data.json().headlines[0];
                             this.followerArray.push(this.follower);
                             this.newFollower = '';
                             this.follower = {id: '', name: '', img: '', status: ''};
                             this.http.get("https://ricebookmrg7.herokuapp.com/articles", this.options).subscribe(data =>  {
-                                if (data.status != 200) {
-                                  // show some error
-                                } else {
+                                if (data.status == 200) {
                                   this.articleArray = data.json().articles;
                                   this.allarticlesArray = data.json().articles;
                                 }
@@ -320,12 +294,10 @@ export class MainComponent implements OnInit {
     var userId = this.followerArray[ind].id;
   	this.followerArray.splice(ind, 1);
     this.http.delete("https://ricebookmrg7.herokuapp.com/following/" + userId, this.options).subscribe(data =>  {
-        if (data.status != 200) {
-        } else {
+        if (data.status == 200) {
           this.followerUserArray = data.json().following;
           this.http.get("https://ricebookmrg7.herokuapp.com/articles", this.options).subscribe(data =>  {
-            if (data.status != 200) {
-            } else {
+            if (data.status == 200) {
               this.articleArray = data.json().articles;
               this.allarticlesArray = data.json().articles;
             }
