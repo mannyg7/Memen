@@ -1,14 +1,22 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { Http, Headers } from '@angular/http';
+import {Request, RequestOptions, RequestMethod , ResponseContentType} from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 
 @Pipe({
   name: 'safeurl'
 })
 export class SafeurlPipe implements PipeTransform {
 
-  constructor(private domSanitizer: DomSanitizer) {}
-  transform(url) {
-    return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+  constructor(private http: Http) {}
+
+  transform(url: string) {
+  const headers = new Headers(); 
+  headers.append('Access-Control-Allow-Origin', 'https://mrg7comp431folkzonesite1.surge.sh');
+  return this.http.get("https://ricebookmrg7.herokuapp.com/headlines/" + url, new RequestOptions({headers: headers, withCredentials: true}));
   }
 
 }

@@ -28,7 +28,6 @@ export class MainComponent implements OnInit {
   status: string = "";
   followerUserArray: Array<any> = [];
   followerArray: Array<any> = [];
-  pictureArray: Array<string> = [];
   tempArray: Array<any> = [];
   headers;
   options;
@@ -57,24 +56,6 @@ export class MainComponent implements OnInit {
           this.currUser = data.json().username;
           this.followerUserArray = data.json().following;
         }
-
-        for (let fol of this.followerUserArray) {
-          this.follower = {id: '', name: '', img: "", status: ""}
-          this.follower['id'] = fol;
-          this.http.get("https://ricebookmrg7.herokuapp.com/avatars/" + fol, this.options).subscribe(data =>  {
-              if (data.status == 200) {
-                this.pictureArray[String(fol)] = data.json().avatar[0];
-                this.follower['name'] = fol;
-                this.follower['img'] = data.json().avatar[0];
-              }
-          });
-          this.http.get("https://ricebookmrg7.herokuapp.com/headlines/" + fol, this.options).subscribe(data =>  {
-              if (data.status == 200) {
-                this.follower['status'] = data.json().headlines[0];
-              }
-          });
-          this.followerArray.push(this.follower);
-      }
     });
 
     this.http.get("https://ricebookmrg7.herokuapp.com/headlines", this.options).subscribe(data =>  {
@@ -93,7 +74,6 @@ export class MainComponent implements OnInit {
 
 
   ngAfterViewInit() {
-  	this.pictureArray[this.currUserName] = this.currPic;
   }
 
   reset() {
@@ -238,12 +218,12 @@ export class MainComponent implements OnInit {
     this.http.put("https://ricebookmrg7.herokuapp.com/articles/" + artId, {text: k, commentId: "-1"} ,this.options).subscribe(data =>  {
         if (data.status == 200) {
           this.http.get("https://ricebookmrg7.herokuapp.com/articles", this.options).subscribe(data =>  {
-                                if (data.status != 200) {
-                                } else {
-                                  this.articleArray = data.json().articles;
-                                  this.allarticlesArray = data.json().articles;
-                                }
-                            });
+              if (data.status != 200) {
+              } else {
+                this.articleArray = data.json().articles;
+                this.allarticlesArray = data.json().articles;
+              }
+          });
         }
     });
   }
@@ -257,26 +237,11 @@ export class MainComponent implements OnInit {
         this.http.put("https://ricebookmrg7.herokuapp.com/following/" + this.newFollower, {}, this.options).subscribe(data =>  {
             if (data.status == 200) {
               this.followerUserArray = data.json().following;
-              this.follower['id'] = this.newFollower;
-              this.follower['name'] = this.newFollower;
-              this.http.get("https://ricebookmrg7.herokuapp.com/avatars/" + this.newFollower, this.options).subscribe(data =>  {
+              this.newFollower = '';
+              this.http.get("https://ricebookmrg7.herokuapp.com/articles", this.options).subscribe(data =>  {
                   if (data.status == 200) {
-                    this.follower['img'] = data.json().avatar[0];
-                    this.pictureArray[this.newFollower] = data.json().avatar[0];
-                    this.http.get("https://ricebookmrg7.herokuapp.com/headlines/" + this.newFollower, this.options).subscribe(data =>  {
-                          if (data.status == 200) {
-                            this.follower['status'] = data.json().headlines[0];
-                            this.followerArray.push(this.follower);
-                            this.newFollower = '';
-                            this.follower = {id: '', name: '', img: '', status: ''};
-                            this.http.get("https://ricebookmrg7.herokuapp.com/articles", this.options).subscribe(data =>  {
-                                if (data.status == 200) {
-                                  this.articleArray = data.json().articles;
-                                  this.allarticlesArray = data.json().articles;
-                                }
-                            });
-                          }
-                      });
+                    this.articleArray = data.json().articles;
+                    this.allarticlesArray = data.json().articles;
                   }
               });
             }
@@ -291,8 +256,7 @@ export class MainComponent implements OnInit {
 
   /*Delete the follower*/
   deleteFollower(ind) {
-    var userId = this.followerArray[ind].id;
-  	this.followerArray.splice(ind, 1);
+    var userId = this.followerUserArray[ind];
     this.http.delete("https://ricebookmrg7.herokuapp.com/following/" + userId, this.options).subscribe(data =>  {
         if (data.status == 200) {
           this.followerUserArray = data.json().following;
@@ -345,12 +309,16 @@ export class MainComponent implements OnInit {
     }
   }
 
-  getPic(postAuthor: string) {
-    if(this.currUserName != null && postAuthor == this.currUserName) return this.currPic;
-    if(!(postAuthor in this.pictureArray)) {
-      return "http://www.lumineers.me/images/core/profile-image-zabadnesterling.gif";
+  getPic(url) {
+    if(url != null) {
+      return url.json().avatar[0];
     }
-    return this.pictureArray[postAuthor];
+  }
+
+  getStatus(url) {
+    if(url != null) {
+      return url.json().headlines[0];
+    }
   }
 
 }

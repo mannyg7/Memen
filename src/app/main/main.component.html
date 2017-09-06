@@ -31,11 +31,13 @@
 			<button id="addFollower" (click)="addFollower();">Follow User</button>
 			<div id="invalidUser" class="pwd alert alert-danger">Cannot add invalid user</div>
 			<br/>
-			<div class="folList" *ngFor="let fol of followerArray; let i = index">
-				<p><a [routerLink]="['/user', fol.name]"><button id="userbutton">{{fol.name}}</button></a>}</p>
-				<img id="folpic" [src]="fol.img">
-				<p id="headline"><label id="status">Status:</label>{{fol.status}}</p>
+
+			<div class="folList" *ngFor="let fol of followerUserArray; let i = index">
+				<p><a [routerLink]="['/user', fol]"><button id="userbutton">{{fol}}</button></a>}</p>
+				<img id="folpic" [attr.src]="getPic(fol | pipemodule | async)">
+				<p id="headline"><label id="status">Status: </label>{{getStatus(fol | safeurl | async)}}</p>
 				<button class="delUser" (click)="deleteFollower(i)">Unfollow</button>
+				<br>
 			</div>
 		</div>
 	</div>
@@ -62,7 +64,7 @@
 						<td id="newArticle" class="card">
 							<tr id="newArticle" class="card">
 								<div class="media">
-									<img id="posterImg" [src]="getPic(articleP.author)">
+									<img id="posterImg" [attr.src]="getPic(articleP.author | pipemodule | async)" >
 									<h4 style="display:inline-block"><a [routerLink]="['/user', articleP.author]"><button id="userbutton">{{articleP.author}}</button></a> &#183; 
 										<small style="font-size:15px;line-height:50px">{{articleP.date.substring(0,10)}}
 										</small>
@@ -90,7 +92,7 @@
 								<div [class]="'id'+i" [id]="'id'+i"> 
 									<div class="comCard" style="max-width: 500px">
 										<div>
-											<img id="posterImg" [src]="getPic(comment.author)">
+											<img id="posterImg" [attr.src]="getPic(comment.author | pipemodule | async)">
 											<h4 style="display:inline-block"><a [routerLink]="['/user', comment.author]"><button id="userbutton">{{comment.author}}</button></a> &#183; 
 												<small style="font-size:15px;line-height:50px">{{articleP.date.substring(0,10)}}
 												</small>
