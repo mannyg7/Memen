@@ -91,6 +91,17 @@ export class AuthComponent implements OnInit {
     //this.router.navigate(["/main"]);
   }
 
+  onDemoLogin() {
+    document.getElementById("invalidCreds").style.visibility = "hidden";
+    this.http.post("https://ricebookmrg7.herokuapp.com/login", {username: 'Penny', password: 'letmein'}, this.options).subscribe(data =>  {
+        if (data.status == 200) {
+          this.router.navigate(["/main"]);
+        }
+    }, err => {
+          console.log(err);
+      });
+  }
+
   onSubmitThirdPartyLogin() {
     window.location.href="http://ricebookmrg7.herokuapp.com/login/google";
 
