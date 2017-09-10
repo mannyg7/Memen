@@ -93,7 +93,7 @@ export class AuthComponent implements OnInit {
 
   onDemoLogin() {
     document.getElementById("invalidCreds").style.visibility = "hidden";
-    this.http.post("https://ricebookmrg7.herokuapp.com/login", {username: 'Penny', password: 'letmein'}, this.options).subscribe(data =>  {
+    this.http.post("https://ricebookmrg7.herokuapp.com/login", {username: '', password: ''}, this.options).subscribe(data =>  {
         if (data.status == 200) {
           this.router.navigate(["/main"]);
         }
