@@ -4,9 +4,13 @@
 Made a 9Gag inspired social media application. It allows users to make accounts, share memes, explore recently shared memes, 
 follow other users, and comment on posts. Built with: AngularJS, HTML, CSS, MongoDB, with backend hosted on heroku.
 
-##Further Changes:
+## Deployed Version:
+https://mrg7comp431folkzonesite1.surge.sh (Google login deprecated because of version changes)
+
+## Further Improvements:
 - Follower recommendations
-- Making frontend more aesthetically pleasing
+- Incorporating hashtags and topics
+- More UI changes to make it more user-friendly
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
 
