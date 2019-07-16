@@ -1,6 +1,12 @@
 # Meme'n
 
 ## Description
+Made a 9Gag inspired social media application. It allows users to make accounts, share memes, explore recently shared memes, 
+follow other users, and comment on posts. Built with: AngularJS, HTML, CSS, MongoDB, with backend hosted on heroku.
+
+##Further Changes:
+- Follower recommendations
+- Making frontend more aesthetically pleasing
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
 
