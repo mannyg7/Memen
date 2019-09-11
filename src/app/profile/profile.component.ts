@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModule } from '@angular/core';
+//import { NgModule } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { Injectable } from '@angular/core';
@@ -13,11 +13,11 @@ import {Request, RequestOptions, RequestMethod} from '@angular/http';
   styleUrls: ['./profile.component.css']
 })
 
-@NgModule({
+/*@NgModule({
   imports: [
     FormsModule
   ]
-})
+})*/
 
 export class ProfileComponent implements OnInit {
 

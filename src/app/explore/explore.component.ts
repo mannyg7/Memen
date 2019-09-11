@@ -57,7 +57,7 @@ export class ExploreComponent implements OnInit {
     
   }
 
-  onScrollDown (ev) {
+  onScrollDown () {
     this.http.get("https://ricebookmrg7.herokuapp.com/explore/" + this.articleArray.length, this.options).subscribe(data =>  {
         if (data.status == 200) {
           if (data.json().articles[0].length == 0) {
