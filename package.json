@@ -30,7 +30,7 @@
     "ngx-infinite-scroll": "^0.8.3",
     "oauth": "^0.9.15",
     "rxjs": "^5.4.2",
-    "surge": "^0.19.0",
+    "surge": "^0.23.1",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
